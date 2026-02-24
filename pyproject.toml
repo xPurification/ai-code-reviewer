@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel>=0.41"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-code-reviewer"
+version = "1.0.0"
+description = "CLI tool for automated code reviews using Google Gemini and the GitHub API"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+authors = [
+    {name = "Devon Purification"},
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Quality Assurance",
+    "Typing :: Typed",
+]
+dependencies = [
+    "click>=8.1",
+    "google-genai>=1.0",
+    "requests>=2.31",
+    "pydantic>=2.0",
+    "rich>=13.0",
+    "python-dotenv>=1.0",
+    "tenacity>=8.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "responses>=0.24",
+]
+
+[project.scripts]
+ai-review = "ai_code_reviewer.cli:cli"
+
+[tool.setuptools.packages.find]
+include = ["ai_code_reviewer*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
